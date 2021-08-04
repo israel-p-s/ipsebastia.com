@@ -1,0 +1,67 @@
+.streamer {
+  list-style-type: none;
+  width: 360px;
+  height: 140px;
+  background-color: #000;
+  border-radius: 12px;
+  padding: 20px 20px;
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr;
+  grid-template-areas:
+        'nombre nombre imagen'
+        'visitas visitas imagen'
+        'ver ver imagen';
+  text-align: left;
+  margin: 10px;
+}
+
+
+.streamer > h6 {
+  color: #EAF2EF;
+  grid-area: nombre;
+}
+
+.streamer > p {
+  color: #EAF2EF;
+  grid-area: visitas;
+}
+
+
+.streamer > .visitas {
+  color: #EAF2EF;
+  grid-area: visitas;
+}
+
+
+.streamer > .ver {
+  color: #EAF2EF;
+  grid-area: ver;
+}
+
+.streamer > .ver a:link,.ver a:visited,.ver a:active {
+  text-decoration:none;
+  color: #D63384;
+}
+
+.streamer > img {
+  grid-area: imagen;
+  max-height: 50px;
+}
+
+#grafica, #info{
+  display: inline-block;
+}
+
+#gridinfo {
+  display: grid;
+  background-color: #EAF2EF;
+  grid-template-columns: 1fr 1fr;
+}
+
+#streamers, #idiomas{
+  display: inline-block;
+}
+
+.tooltip {
+  background-color: #EAF2EF;
+}

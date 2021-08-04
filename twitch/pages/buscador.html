@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Twitch Analytics - I. P. Sebastià</title>
+
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/buscador.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="sidenav">
+      <a href="../index.html"><em class="fas fa-home"></em><span> HOME</span></a>
+      <a href="buscador.html?#"><em class="fas fa-search"></em><span> BUSCADOR</span></a>
+      <a href="streamers.html"><em class="fas fa-user-alt"></em><span> TOP STREAMERS</span></a>
+      <a href="juegos.html"><em class="fas fa-gamepad"></em><span> TOP JUEGOS</span></a>      
+      <a href="idiomas.html"><em class="fas fa-language"></em><span> TOP IDIOMAS</span></a>
+      <a href="acerca.html"><em class="fas fa-question-circle"></em><span> ACERCA DE</span></a>
+  </div>
+  <div class="main">
+      <h1>BUSCADOR</h1>
+      <form action="#" id="filtrar-form">
+        <div id="form-element">
+          <p>Streamer:</p>
+          <input type="text" id="user" list="userList" size="30">
+          <datalist id="userList"></datalist>
+        </div>
+        <div id="form-element">
+          <p>Juego:</p>
+          <input type="text" id="game" list="gameList" size="50">
+          <datalist id="gameList"></datalist>
+        </div>
+        <div id="form-element">
+          <p>Idioma:</p>
+          <input type="text" id="language" list="languageList" size="25">
+          <datalist id="languageList"></datalist>
+        </div>
+        <div id="form-element">
+          <p>Rango de tiempo:</p>
+          <input type="text" id="rango" list="rangoList" size="25">
+          <datalist id="rangoList">
+            <option label="1 HORA" value="1 HORA">
+            <option label="1 DÍA" value="1 DÍA">
+            <option label="1 SEMANA" value="1 SEMANA">
+            <option label="1 MES" value="1 MES">
+            <option label="TODO" value="TODO">
+          </datalist>
+        </div>
+        <div id="form-element">
+          <input type="submit" value="FILTRAR" onclick="filtrar(user.value, game.value, language.value, rango.value)">
+        </div>
+      </form>
+      <ul id="streamersList"></ul>
+  </div>
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="../js/buscador.js"></script>
+    <script src="../js/jquery.js"></script>
+
+
+</body>
+
+</html>

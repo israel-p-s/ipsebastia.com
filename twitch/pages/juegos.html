@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Twitch Analytics - I. P. Sebastià</title>
+
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/juegos.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <a href="../index.html"><em class="fas fa-home"></em><span> HOME</span></a>
+        <a href="buscador.html?#"><em class="fas fa-search"></em><span> BUSCADOR</span></a>
+        <a href="streamers.html"><em class="fas fa-user-alt"></em><span> TOP STREAMERS</span></a>
+        <a href="juegos.html"><em class="fas fa-gamepad"></em><span> TOP JUEGOS</span></a>    
+        <a href="idiomas.html"><em class="fas fa-language"></em><span> TOP IDIOMAS</span></a>
+        <a href="acerca.html"><em class="fas fa-question-circle"></em><span> ACERCA DE</span></a>
+    </div>
+
+    <div class="main">
+        <div class="tiempo">
+            <a href="#hora" class="btn btn-default" id="hora" style="color: black;">1 HORA</a>
+            <a href="#dia" class="btn btn-default" id="dia" style="color: black;">1 DÍA</a>
+            <a href="#semana" class="btn btn-default" id="semana" style="color: black;">1 SEMANA</a>
+            <a href="#mes" class="btn btn-default" id="mes" style="color: black;">1 MES</a>
+            <a href="#todo" class="btn btn-default" id="todo" style="color: black;">TODO</a>
+        </div>
+        <h1>TOP JUEGOS</h1>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <div id="grafica"></div><div id="info"></div>
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/juegos.js"></script>
+</body>
+
+</html>

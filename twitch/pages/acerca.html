@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Twitch Analytics - I. P. Sebastià</title>
+
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/acerca.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <a href="../index.html"><em class="fas fa-home"></em><span> HOME</span></a>
+        <a href="buscador.html?#"><em class="fas fa-search"></em><span> BUSCADOR</span></a>
+        <a href="streamers.html"><em class="fas fa-user-alt"></em><span> TOP STREAMERS</span></a>
+        <a href="juegos.html"><em class="fas fa-gamepad"></em><span> TOP JUEGOS</span></a>      
+        <a href="idiomas.html"><em class="fas fa-language"></em><span> TOP IDIOMAS</span></a>
+        <a href="acerca.html"><em class="fas fa-question-circle"></em><span> ACERCA DE</span></a>
+    </div>
+
+        <div class="main">
+                <h1>ACERCA DE</h1>
+                <br>
+                <div id="indice" class="list-group">
+                    <a class="list-group-item list-group-item-action" href="#item-1">¿Qué es esto?</a>
+                    <a class="list-group-item list-group-item-action" href="#item-2">La API de Twitch</a>
+                    <a class="list-group-item list-group-item-action" href="#item-3">Almacenando los datos de Twitch</a>
+                    <a class="list-group-item list-group-item-action" href="#item-4">La BBDD</a>
+                    <a class="list-group-item list-group-item-action" href="#item-5">BBDD - definición</a>
+                    <a class="list-group-item list-group-item-action" href="#item-6">La API</a>
+                    <a class="list-group-item list-group-item-action" href="#item-7">Peticiones a la API</a>
+                    <a class="list-group-item list-group-item-action" href="#item-8">Portal web</a>
+                    <a class="list-group-item list-group-item-action" href="#item-9">Descargar el proyecto</a>
+                  </div>
+                  <div data-spy="scroll" data-target="#indice" data-offset="0" class="scroll">
+                    <h4 id="item-1">¿Qué es esto?</h4>
+                    <p>Tal y como se explica en el HOME, esta web app es el proyecto de fin de grado de ingeniería informática en la UNED de Israel Palma Sebastià.</p>
+                    <p>Este proyecto ha consistido en la creación de un portal de estádisticas de la plataforma de streaming Twitch.</p>
+                    <p>Para lograr el correcto funcionamiento de este proyecto se ha pasado por todas las fases de desarrollo del backend y del frontend, tal y como explicaré a continuación.</p>
+                    <br>
+                    <h4 id="item-2">La API de Twitch</h4>
+                    <p>Twitch ofrece los datos de su plataforma mediante una <a href="https://dev.twitch.tv/docs/api/" target="_blank">API</a>.</p>
+                    <p>Twitch está bastante comprometido con el desarrollo de distinas apps y bots para su plataforma, y es por ello que pone al alcance de los desarrolladores muchas</p>
+                    <p>herramientas y contenido, logrando así una amplia comunidad de desarrolladores.</p>
+                    <p>Algo que hay que tener en cuenta para nuestro proyecto es que los datos de Twitch no son persistentes. La API nos ofrece instáneas del estado actual en el momento</p>
+                    <p>en que se le hace la petición.</p>
+                    <p>Por ejemplo, si quiero saber en este mismo instante cuanta gente hay viendo un streaming determinando, simplemente le tengo que hacer la petición a la API, en cambio,</p>
+                    <p>si en un futuro quiero conocer estos mismos datos, los tendré que almacenar. No se le puede hacer una petición a la API de Twitch sobre información en el pasado.</p>
+                    <br>
+                    <h4 id="item-3">Almacenando los datos de Twitch</h4>
+                    <p>Se han usado algunos scripts en Python para autenticarnos en la API de Twitch, hacerle peticiones y almacenar los datos en la base de datos.</p>
+                    <img src="../img/python.png" width="150" height="150" alt="python">
+                    <br><br><br>
+                    <h4 id="item-4">La BBDD</h4>
+                    <p>Para elegir nuestra base de datos tenemos que tener en cuenta que una de las características importantes en nuestros datos es el tiempo.</p>
+                    <p>Estamos ante un caso de time series. Existen varias opciones para abordar un proyecto de time series y he elegido una de las opciones mejor valoradas y</p>
+                    <p>con la que más familiarizado estoy: PostgreSQL con el plugin TimeScaleDB.</p>
+                    <img src="../img/postgresql.png" width="150" height="150" alt="postgresql">
+                    <img src="../img/timescaledb.png" width="150" height="150" alt="timescaledb">
+                    <br><br><br>
+                    <h4 id="item-5">BBDD - definición</h4>
+                    <p>La base de datos cuenta de 3 tablas: streams, streamers y juegos.</p>
+                    <p>A continuación, se comparte una descripción gráfica de cada una de las tablas:</p>
+                    <img src="../img/streams.png" alt="streams">
+                    <img src="../img/streamers.png" alt="streamers">
+                    <img src="../img/juegos.png" alt="juegos">
+                    <br><br><br>
+                    <h4 id="item-6">La API</h4>
+                    <p>La API es el componente del proyecto que se encarga de hacer consultar a la base de datos, tratar la información y servirla para ser usada en la web.</p>
+                    <p>La API se ha implementado con JavaScript y nodejs.</p>
+                    <img src="../img/js.png" width="150" height="150" alt="JavaScript">
+                    <img src="../img/nodejs.png" width="250" height="85" alt="nodejss">
+                    <br><br><br>
+                    <h4 id="item-7">Peticiones a la API</h4>
+                    <p>Mediante las peticiones GET a la API se obtiene la información deseada de la base de datos, que puede ser usada en la web.</p>
+                    <p>A continuación, se describen las distintas rutas de peticiones:</p>
+                    <code>/api/filtrar/:user/:game/:language/:rango</code>
+                    <p>Dado un usuario, un juego, un lenguaje y/o un rango de tiempo, se devuelve el id de los usuarios que cumplan esos requisitos.</p>
+                    <code>/api/game/:game</code>
+                    <p>Dado un juego, se devuelve la información de ese juego.</p>
+                    <code>/api/game/:game/:rango/streamers</code>
+                    <p>Dado un juego y un rango de tiempo, se devuelve el top streamers para esos parámetros.</p>
+                    <code>/api/game/:game/:rango/languages</code>
+                    <p>Dado un juego y un idioma, se devuelve el top streamers para esos parámetros.</p>
+                    <code>/api/games/now</code>
+                    <p>Devuelve la información de los juegos en la última hora.</p>
+                    <code>/api/games/one</code>
+                    <p>Devuelve la información de los juegos en el último día.</p>
+                    <code>/api/games/seven</code>
+                    <p>Devuelve la información de los juegos en la última semana.</p>
+                    <code>/api/games/thirty</code>
+                    <p>Devuelve la información de los juegos en el último mes.</p>
+                    <code>/api/games/all</code>
+                    <p>Devuelve toda la información de los juegos.</p>
+                    <code>/api/games</code>
+                    <p>Devuelve una lista de los juegos en la base de datos.</p>
+                    <code>/api/language/:language/:rango/streamers</code>
+                    <p>Dado un idioma y un rango de tiempo, se devuelve el top streamers para esos parámetros.</p>
+                    <code>/api/language/:language/:rango/games</code>
+                    <p>Dado un idioma y un rango de tiempo, se devuelve el top juegos para esos parámetros.</p>
+                    <code>/api/languages/now</code>
+                    <p>Devuelve la información de los idiomas en la última hora.</p>
+                    <code>/api/languages/one</code>
+                    <p>Devuelve la información de los idiomas en el último día.</p>
+                    <code>/api/languages/seven</code>
+                    <p>Devuelve la información de los idiomas en la última semana.</p>
+                    <code>/api/languages/thirty</code>
+                    <p>Devuelve la información de los idiomas en el último mes.</p>
+                    <code>/api/languages/all</code>
+                    <p>Devuelve toda la información de los idiomas.</p>
+                    <code>/api/languages</code>
+                    <p>Devuelve una lista de los idiomas en la base de datos.</p>
+                    <code>/api/streamer/:user/now</code>
+                    <p>Devuelve los streams de un streamer en la última hora.</p>
+                    <code>/api/streamer/:user/one</code>
+                    <p>Devuelve los streams de un streamer en el último día.</p>
+                    <code>/api/streamer/:user/seven</code>
+                    <p>Devuelve los streams de un streamer en la última semana.</p>
+                    <code>/api/streamer/:user/thirty</code>
+                    <p>Devuelve los streams de un streamer en la último mes.</p>
+                    <code>/api/streamer/:user/all</code>
+                    <p>Devuelve todos los streams de un streamer.</p>
+                    <code>/api/streamers/now</code>
+                    <p>Devuelve los streamers más vistos en la última hora.</p>
+                    <code>/api/streamers/one</code>
+                    <p>Devuelve los streamers más vistos en el último día.</p>
+                    <code>/api/streamers/seven</code>
+                    <p>Devuelve los streamers más vistos en la última semana.</p>
+                    <code>/api/streamers/thirty</code>
+                    <p>Devuelve los streamers más vistos en el último mes.</p>
+                    <code>/api/streamers/all</code>
+                    <p>Devuelve los streamers más vistos en total.</p>
+                    <code>/api/streamers</code>
+                    <p>Devuelve una lista de todos los streamers.</p>
+                    <br><br><br>
+                    <h4 id="item-8">Portal web</h4>
+                    <p>Se ha creado este portal web para la visualización de la información.</p>
+                    <p>La implementación de este portal web se ha realizado de forma general en HTML, CSS y JavaScript.</p>
+                    <p>La creación de las gráficas se ha realizado mediante la librería de JavaScript d3.js.</p>
+                    <img src="../img/html.png" width="150" height="150" alt="HTML">
+                    <img src="../img/css.png" width="215" height="150" alt="CSS">
+                    <img src="../img/js.png" width="150" height="150" alt="JavaScript">
+                    <img src="../img/d3.png" width="200" height="150" alt="D3">
+                    <br><br><br>
+                    <h4 id="item-9">Descargar el proyecto</h4>
+                    <p>Para la entrega de este Proyecto de Fin de Grado, se ha adjutando también una memoria que describe en</p>
+                    <p>el desarrollo del mismo. Proximamente se publicará en este mismo lugar tanto la memoria como el proyecto.</p>
+
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/index.js"></script>
+
+</body>
+
+</html>

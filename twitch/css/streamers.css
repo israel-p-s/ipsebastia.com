@@ -1,0 +1,68 @@
+
+#streamersList {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+}
+  
+.streamer {
+    list-style-type: none;
+    background-color: #000;
+    border-radius: 12px;
+    padding: 20px 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+          'grafica nombre'
+          'grafica info'
+          'grafica info'
+          'grafica ver';
+    text-align: left;
+    margin: 10px;
+}
+  
+.streamer > h2 {
+    color: #EAF2EF;
+    grid-area: nombre;
+}
+  
+.streamer > .datos {
+    color: #EAF2EF;
+    grid-area: datos;
+}
+  
+.streamer > .grafica {
+    color: #EAF2EF;
+    grid-area: grafica;
+}
+  
+.streamer > .ver {
+    color: #EAF2EF;
+    grid-area: ver;
+}
+  
+.streamer > .info {
+    color: #EAF2EF;
+    grid-area: info;
+}
+  
+.streamer > .ver a:link,.ver a:visited,.ver a:active {
+    text-decoration:none;
+    color: #D63384;
+}
+  
+.streamer > img {
+    grid-area: imagen;
+    max-height: 200px;
+}
+  
+path { 
+    stroke: rgb(255, 255, 255);
+      stroke-width: 2;
+}
+  
+g{
+    stroke-width: 0.5;
+    stroke: #EAF2EF
+}
